@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Jhunjhunwala — Orbital Intelligence & GNSS Engineering</title>
+  <meta name="description" content="Aerospace Engineering student building software tools for satellite navigation, GNSS constellation health monitoring, and orbital data intelligence. Creator of the GNSS Health Monitoring Dashboard and The Space PNT Report." />
+  <meta name="keywords" content="GNSS, satellite navigation, TLE propagation, orbital mechanics, NavIC, QZSS, BeiDou-3, aerospace engineering, space domain awareness, Python, Streamlit" />
+  <meta name="author" content="Aditya Jhunjhunwala" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aditya Jhunjhunwala — Orbital Intelligence & GNSS" />
+  <meta property="og:description" content="Turning satellite data into orbital intelligence. GNSS constellation health monitoring, TLE propagation, and space-domain analysis." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ======================================================
+       CANVAS BACKGROUND
+  ======================================================= -->
+  <canvas id="orbital-canvas"></canvas>
+
+  <!-- ======================================================
+       NAVIGATION
+  ======================================================= -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Aditya Jhunjhunwala home">AJ</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#work" class="nav-link" id="nav-work">Work</a></li>
+        <li><a href="#reports" class="nav-link" id="nav-reports">Reports</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+  ======================================================= -->
+  <section id="hero" aria-label="Introduction">
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- Left: Text content -->
+        <div class="hero-left">
+          <div class="hero-eyebrow reveal">
+            <div class="hero-eyebrow-dot"></div>
+            <span class="hero-eyebrow-text">Aerospace Eng · IIEST Shibpur · Howrah, India</span>
+          </div>
+
+          <h1 class="hero-name reveal">
+            Hi, I'm<br /><span>Aditya Jhunjhunwala.</span>
+          </h1>
+
+          <div class="hero-tagline reveal" aria-live="polite">
+            <span id="typed-text"></span><span id="typed-cursor" aria-hidden="true"></span>
+          </div>
+
+          <p class="hero-desc reveal">
+            Aerospace engineering student building software at the intersection of orbital mechanics,
+            satellite navigation, and data-driven space-domain analysis. Currently monitoring
+            <strong>30+ satellites</strong> across NavIC, QZSS, and BeiDou-3 in real-time.
+          </p>
+
+          <div class="hero-meta reveal">
+            <span class="hero-meta-item">GNSS OSINT</span>
+            <div class="hero-meta-sep" aria-hidden="true"></div>
+            <span class="hero-meta-item">Python</span>
+            <div class="hero-meta-sep" aria-hidden="true"></div>
+            <span class="hero-meta-item">Streamlit</span>
+            <div class="hero-meta-sep" aria-hidden="true"></div>
+            <span class="hero-meta-item">TLE Propagation</span>
+            <div class="hero-meta-sep" aria-hidden="true"></div>
+            <span class="hero-meta-item">Space-Track API</span>
+          </div>
+
+          <div class="hero-ctas reveal">
+            <a href="#work" class="btn btn-primary" id="hero-cta-work">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              View Projects
+            </a>
+            <a href="#reports" class="btn btn-outline" id="hero-cta-reports">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              Read The Space PNT Report
+            </a>
+            <a href="Aditya_resume (1).pdf" download class="btn btn-ghost" id="hero-cta-resume">↓ Download Resume</a>
+          </div>
+        </div>
+
+        <!-- Right: Dashboard visual -->
+        <div class="hero-visual reveal">
+          <div class="hero-glow" aria-hidden="true"></div>
+
+          <!-- Floating tags -->
+          <div class="float-tags" aria-hidden="true">
+            <span class="float-tag cyan">TLE Processing</span>
+            <span class="float-tag green">GNSS Health Scoring</span>
+            <span class="float-tag dim">Space-Track API</span>
+            <span class="float-tag cyan">Orbital Drift</span>
+            <span class="float-tag dim">Station-Keeping</span>
+            <span class="float-tag green">NavIC · QZSS</span>
+            <span class="float-tag cyan">BeiDou-3</span>
+          </div>
+
+          <div class="dashboard-frame">
+            <div class="dashboard-bar">
+              <div class="db-dot"></div>
+              <div class="db-dot"></div>
+              <div class="db-dot"></div>
+              <span class="db-url">gnss-health-monitor.streamlit.app</span>
+            </div>
+            <img
+              src="dashboard_mockup.png"
+              alt="GNSS Constellation Health Monitoring Dashboard showing satellite health scores, orbital ground tracks, and sky plots for NavIC, QZSS, and BeiDou-3 constellations"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       FEATURED WORK
+  ======================================================= -->
+  <section id="work" aria-label="Featured projects">
+    <div class="container">
+      <div class="work-header reveal">
+        <p class="section-label">Featured Work</p>
+        <h2 class="section-title">Projects that ship.</h2>
+        <p class="section-sub">Orbital data systems, live dashboards, and technical reporting — built at the intersection of aerospace and software.</p>
+      </div>
+
+      <div class="work-grid stagger">
+
+        <!-- Card 1: GNSS — Featured (full width) -->
+        <div class="card-featured reveal" style="--i:0">
+          <article class="project-card">
+            <div class="featured-left">
+              <div>
+                <span class="card-badge">Flagship Project</span>
+                <p class="card-number" style="margin-top:12px">01 — Live Dashboard</p>
+              </div>
+              <h3 class="card-title">GNSS Constellation Health Monitoring System</h3>
+              <p class="card-desc">
+                A real-time dashboard that ingests TLE data from the Space-Track API, propagates
+                satellite positions using orbital mechanics, and converts raw dynamics into a
+                custom weighted health index — covering station-keeping residuals, orbital drift
+                magnitude, and inclination deviation. Interactive sky plots, ground-track maps,
+                and time-series health trends enable simultaneous diagnostics across all three
+                constellations.
+              </p>
+              <div class="card-metrics">
+                <div class="metric">
+                  <span class="metric-val">30+</span>
+                  <span class="metric-label">Satellites</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">3</span>
+                  <span class="metric-label">Constellations</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">Live</span>
+                  <span class="metric-label">TLE Ingestion</span>
+                </div>
+                <div class="metric">
+                  <span class="metric-val">Custom</span>
+                  <span class="metric-label">Health Score</span>
+                </div>
+              </div>
+              <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">Streamlit</span>
+                <span class="card-tag">Space-Track API</span>
+                <span class="card-tag">Plotly</span>
+                <span class="card-tag">Folium</span>
+                <span class="card-tag">SGP4</span>
+                <span class="card-tag">NavIC · QZSS · BeiDou-3</span>
+              </div>
+            </div>
+            <div class="featured-right">
+              <div class="card-actions">
+                <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="card-link primary" id="proj-gnss-live">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                  Live Dashboard
+                </a>
+                <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-gnss-github">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  GitHub
+                </a>
+                <a href="#case-study" class="card-link" id="proj-gnss-case">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                  Case Study ↓
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 2: Space PNT Report -->
+        <div class="reveal" style="--i:1">
+          <article class="project-card" style="height:100%">
+            <span class="card-badge green">Monthly Report</span>
+            <p class="card-number">02 — Technical Writing</p>
+            <h3 class="card-title">The Space PNT Report</h3>
+            <p class="card-desc">
+              Monthly technical reporting on GNSS constellation health, orbital behaviour,
+              station-keeping patterns, and operational trends — authored under direct
+              industry mentorship for professional distribution. Covers NavIC, QZSS,
+              and BeiDou-3 across 3+ navigation systems per issue.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">NavIC</span>
+              <span class="card-tag">QZSS</span>
+              <span class="card-tag">BeiDou-3</span>
+              <span class="card-tag">Orbital Analysis</span>
+              <span class="card-tag">Station-Keeping</span>
+            </div>
+            <div class="card-actions" style="margin-top:auto">
+              <a href="https://substack.com/@adityajjw19/note/p-186077093" target="_blank" rel="noopener" class="card-link primary" id="proj-report-latest">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Read Latest Issue
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 3: TLE Toolkit -->
+        <div class="reveal" style="--i:2">
+          <article class="project-card" style="height:100%">
+            <span class="card-badge">Analysis Toolkit</span>
+            <p class="card-number">03 — Research Tools</p>
+            <h3 class="card-title">TLE Processing & Station-Keeping Analysis</h3>
+            <p class="card-desc">
+              Python scripts for TLE data ingestion, orbital propagation via SGP4, slot
+              deviation tracking with ±180° wrap-around handling, and station-keeping
+              residual analysis — the computational backbone underlying the GNSS dashboard
+              and monthly space-domain reporting.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">Python</span>
+              <span class="card-tag">SGP4</span>
+              <span class="card-tag">NumPy</span>
+              <span class="card-tag">Pandas</span>
+              <span class="card-tag">Orbital Mechanics</span>
+            </div>
+            <div class="card-actions" style="margin-top:auto">
+              <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-tle-github">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Card 4: Abhiyantrix -->
+        <div class="reveal" style="--i:3">
+          <article class="project-card" style="height:100%">
+            <span class="card-badge">Web Development</span>
+            <p class="card-number">04 — Leadership</p>
+            <h3 class="card-title">Abhiyantrix 2026 — Fest Website</h3>
+            <p class="card-desc">
+              Built and deployed the official website for IIEST Shibpur's departmental tech
+              fest — handling participant registrations, schedule display, and event
+              information. Managed cross-team coordination and technical event logistics
+              throughout the fest.
+            </p>
+            <div class="card-tags">
+              <span class="card-tag">HTML</span>
+              <span class="card-tag">CSS</span>
+              <span class="card-tag">JavaScript</span>
+              <span class="card-tag">IIEST Shibpur</span>
+            </div>
+            <div class="card-actions" style="margin-top:auto">
+              <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-abhiyantrix-github">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       CASE STUDY
+  ======================================================= -->
+  <section id="case-study" aria-label="GNSS dashboard case study">
+    <div class="container">
+
+      <div class="reveal">
+        <p class="section-label">Case Study</p>
+        <h2 class="section-title">Turning TLE Data into<br />GNSS Health Intelligence</h2>
+        <p class="section-sub">
+          How raw orbital elements become interpretable constellation health metrics — from
+          Space-Track API ingestion to real-time dashboard.
+        </p>
+      </div>
+
+      <div class="cs-grid">
+
+        <div class="cs-left">
+
+          <div class="cs-block reveal">
+            <span class="cs-block-label">The Problem</span>
+            <h3 class="cs-block-title">Raw orbital data is hard to interpret.</h3>
+            <p class="cs-block-body">
+              GNSS constellations are critical operational infrastructure, but Two-Line Element
+              records are dense, numeric, and opaque. Orbital drift, slot deviation, and
+              station-keeping residuals are buried in propagated state vectors — only visible
+              after processing, modelling, and visualisation. There was no fast, accessible
+              way to assess constellation health at a glance.
+            </p>
+          </div>
+
+          <div class="cs-block reveal">
+            <span class="cs-block-label">The Solution</span>
+            <h3 class="cs-block-title">An automated health intelligence pipeline.</h3>
+            <p class="cs-block-body">
+              A Streamlit dashboard that pulls TLE data from the Space-Track API, propagates
+              satellite positions using SGP4 orbital mechanics, and computes a custom weighted
+              health index per satellite — combining orbital drift magnitude, station-keeping
+              residuals, and inclination deviation into a single interpretable score.
+            </p>
+          </div>
+
+          <div class="cs-block reveal">
+            <span class="cs-block-label">What It Does</span>
+            <h3 class="cs-block-title">Six core capabilities.</h3>
+            <div class="cs-features">
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </span>
+                Automated TLE ingestion from Space-Track API — constellation state updated continuously
+              </div>
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </span>
+                Custom weighted health-scoring algorithm per satellite
+              </div>
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </span>
+                Geographic ground-track maps and interactive sky plots (elevation/azimuth)
+              </div>
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </span>
+                Time-series health trends across all 30+ satellites
+              </div>
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                GEO slot deviation tracking with ±180° wrap-around for BeiDou-3 IGSO/GEO
+              </div>
+              <div class="cs-feature">
+                <span class="cs-feature-icon" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </span>
+                Multi-constellation comparison across NavIC, QZSS, and BeiDou-3
+              </div>
+            </div>
+          </div>
+
+        </div><!-- cs-left -->
+
+        <div class="cs-right reveal">
+          <div class="cs-img-card">
+            <div class="cs-img-card-label">// Dashboard overview · GNSS Health Monitor</div>
+            <img src="dashboard_mockup.png" alt="GNSS constellation health monitoring dashboard overview" loading="lazy" />
+          </div>
+
+          <div class="cs-block" style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); padding:24px">
+            <span class="cs-block-label">Why It Matters</span>
+            <p class="cs-block-body">
+              The goal is to make constellation behaviour understandable at a glance — for
+              analysis, monitoring, reporting, and decision support. Raw TLE data is a
+              starting point; the dashboard is what turns it into intelligence.
+            </p>
+            <div style="margin-top:16px">
+              <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="card-link primary" id="cs-live-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Open Live Dashboard →
+              </a>
+            </div>
+          </div>
+        </div><!-- cs-right -->
+
+      </div><!-- cs-grid -->
+
+      <!-- Impact bar -->
+      <div class="cs-impact reveal">
+        <div class="cs-stat">
+          <span class="cs-stat-val">30+</span>
+          <span class="cs-stat-label">Satellites Monitored</span>
+        </div>
+        <div class="cs-stat">
+          <span class="cs-stat-val">3</span>
+          <span class="cs-stat-label">Constellations</span>
+        </div>
+        <div class="cs-stat">
+          <span class="cs-stat-val">6</span>
+          <span class="cs-stat-label">Visualisation Types</span>
+        </div>
+        <div class="cs-stat">
+          <span class="cs-stat-val">Live</span>
+          <span class="cs-stat-label">API Ingestion</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       REPORTS / WRITING
+  ======================================================= -->
+  <section id="reports" aria-label="Technical reports and writing">
+    <div class="container">
+      <div class="reports-header reveal">
+        <p class="section-label">Writing & Analysis</p>
+        <h2 class="section-title">The Space PNT Report</h2>
+        <p class="section-sub">
+          Monthly technical reporting on GNSS constellation behaviour, orbital trends,
+          and space-domain observations — authored under industry mentorship.
+        </p>
+      </div>
+
+      <div class="reports-terminal reveal">
+        <div class="terminal-bar">
+          <div class="term-dot"></div>
+          <div class="term-dot"></div>
+          <div class="term-dot"></div>
+          <span class="terminal-title">~/space-pnt-report/archive</span>
+        </div>
+
+        <div class="report-list" role="list">
+
+          <div class="report-item" role="listitem">
+            <div class="report-id">/report-02</div>
+            <div class="report-info">
+              <div class="report-title">The Space PNT Report — Issue #2</div>
+              <div class="report-meta">
+                <span class="report-meta-item">Constellations: <span>NavIC · QZSS · BeiDou-3</span></span>
+                <span class="report-meta-item">Type: <span>Orbital Behaviour Analysis</span></span>
+              </div>
+              <p class="report-desc">
+                Orbital slot movement, station-keeping patterns, inclination drift, and constellation-level
+                operational observations across three GNSS systems.
+              </p>
+            </div>
+            <div class="report-action">
+              <a href="https://substack.com/@adityajjw19/note/p-186077093" target="_blank" rel="noopener" class="card-link primary" id="report-02-link">
+                Read Report →
+              </a>
+            </div>
+          </div>
+
+          <div class="report-item" role="listitem">
+            <div class="report-id">/report-01</div>
+            <div class="report-info">
+              <div class="report-title">The Space PNT Report — Issue #1</div>
+              <div class="report-meta">
+                <span class="report-meta-item">Constellations: <span>NavIC · QZSS · BeiDou-3</span></span>
+                <span class="report-meta-item">Type: <span>Constellation Health Overview</span></span>
+              </div>
+              <p class="report-desc">
+                First edition: GEO/IGSO behaviour analysis, TLE-derived health baselines,
+                and cross-constellation comparison of orbital stability metrics.
+              </p>
+            </div>
+            <div class="report-action">
+              <a href="https://substack.com/@adityajjw19/note/p-178567799" target="_blank" rel="noopener" class="card-link" id="report-01-link">
+                Read Report →
+              </a>
+            </div>
+          </div>
+
+          <div class="report-item" role="listitem" style="opacity:0.45">
+            <div class="report-id">/report-03</div>
+            <div class="report-info">
+              <div class="report-title">The Space PNT Report — Issue #3</div>
+              <div class="report-meta">
+                <span class="report-meta-item" style="color:var(--text-3)">Status: <span style="color:var(--amber)">Upcoming</span></span>
+              </div>
+              <p class="report-desc" style="font-style:italic">Next issue in preparation — covering BeiDou-3 GEO slot occupancy and NavIC operational trends.</p>
+            </div>
+            <div class="report-action">
+              <span class="card-link" style="opacity:0.5;cursor:default">Coming Soon</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       TECH STACK
+  ======================================================= -->
+  <section id="stack" aria-label="Technical skills and stack">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Technical Stack</p>
+        <h2 class="section-title">The toolkit.</h2>
+        <p class="section-sub">Grouped by use-case, not by logo.</p>
+      </div>
+
+      <div class="stack-grid stagger">
+
+        <div class="stack-card reveal" style="--i:0">
+          <div class="stack-card-header">
+            <div class="stack-icon cyan" aria-hidden="true">🛰️</div>
+            <h3 class="stack-card-title">Orbital & GNSS</h3>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Orbital Mechanics</span>
+            <span class="stack-item">Astrodynamics</span>
+            <span class="stack-item">GNSS & Satellite Navigation</span>
+            <span class="stack-item">TLE Analysis</span>
+            <span class="stack-item">SGP4 Propagation</span>
+            <span class="stack-item">Space Domain Awareness</span>
+            <span class="stack-item">Station-Keeping Analysis</span>
+            <span class="stack-item">GEO Slot Monitoring</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal" style="--i:1">
+          <div class="stack-card-header">
+            <div class="stack-icon green" aria-hidden="true">📊</div>
+            <h3 class="stack-card-title">Data & Visualisation</h3>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Python</span>
+            <span class="stack-item">NumPy</span>
+            <span class="stack-item">Pandas</span>
+            <span class="stack-item">Matplotlib</span>
+            <span class="stack-item">Plotly</span>
+            <span class="stack-item">Folium</span>
+            <span class="stack-item">Streamlit</span>
+            <span class="stack-item">Interactive Dashboards</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal" style="--i:2">
+          <div class="stack-card-header">
+            <div class="stack-icon amber" aria-hidden="true">💻</div>
+            <h3 class="stack-card-title">Web & Software</h3>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">HTML / CSS / JavaScript</span>
+            <span class="stack-item">C</span>
+            <span class="stack-item">SQL</span>
+            <span class="stack-item">Git & GitHub</span>
+            <span class="stack-item">Data Structures & Algorithms</span>
+          </div>
+        </div>
+
+        <div class="stack-card reveal" style="--i:3">
+          <div class="stack-card-header">
+            <div class="stack-icon purple" aria-hidden="true">🔗</div>
+            <h3 class="stack-card-title">APIs & Data Sources</h3>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Space-Track API</span>
+            <span class="stack-item">Satellite Catalog Data</span>
+            <span class="stack-item">TLE Pipelines</span>
+            <span class="stack-item">Automated Ingestion</span>
+            <span class="stack-item">GNSS Data Processing</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       ABOUT
+  ======================================================= -->
+  <section id="about" aria-label="About Aditya">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">About</p>
+        <h2 class="section-title">The person behind the pipeline.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm an <strong>Aerospace Engineering student at IIEST Shibpur</strong> interested in
+            the intersection of orbital mechanics, satellite navigation, software, and data-driven
+            space-domain analysis. My current work focuses on transforming raw orbital data
+            into useful intelligence — especially for GNSS constellations like NavIC, QZSS,
+            and BeiDou-3.
+          </p>
+          <p>
+            I like building things that sit between engineering and software: dashboards,
+            analysis pipelines, visual tools, and technical reports that make complex
+            orbital systems easier to understand. The GNSS health monitoring dashboard
+            started as a curiosity — what do raw TLE numbers actually mean for a constellation's
+            operational state? That question turned into a live system monitoring 30+ satellites.
+          </p>
+          <p>
+            Outside of the orbital data work, I coordinate technical events, enjoy digging into
+            space-domain OSINT, and believe the most interesting problems are the ones that
+            refuse to stay in a single discipline.
+          </p>
+        </div>
+
+        <div class="about-card reveal">
+          <span class="about-card-label">Quick profile</span>
+
+          <div class="about-card-item">
+            <div class="about-card-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 8 8l.38-.38a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 23 18z"/></svg>
+            </div>
+            <div class="about-card-info">
+              <div class="about-card-title">adityajjw19@gmail.com</div>
+              <div class="about-card-sub">Email</div>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-card-item">
+            <div class="about-card-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="about-card-info">
+              <div class="about-card-title">Howrah, West Bengal, India</div>
+              <div class="about-card-sub">Location</div>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-card-item">
+            <div class="about-card-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <div class="about-card-info">
+              <div class="about-card-title">Open to Opportunities</div>
+              <div class="about-card-sub">Internships · Research · Collaborations</div>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-card-item">
+            <div class="about-card-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.08.66-.22.66-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.64.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85l-.01 2.75c0 .26.18.56.67.47A10 10 0 0 0 12 2z"/></svg>
+            </div>
+            <div class="about-card-info">
+              <div class="about-card-title">
+                <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" style="color:var(--cyan)">ElectricPlant19</a>
+              </div>
+              <div class="about-card-sub">GitHub</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       EXPERIENCE
+  ======================================================= -->
+  <section id="experience" aria-label="Work experience">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Where the work happens.</h2>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">
+            <div class="timeline-date-label">Sep 2025 — Present</div>
+            <div class="timeline-date-status">Active</div>
+          </div>
+          <div class="timeline-line" aria-hidden="true">
+            <div class="timeline-dot"></div>
+            <div class="timeline-connector"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role">Space Domain Research Intern</div>
+            <div class="timeline-org">Space Technology Consultant, Bengaluru (Remote)</div>
+            <div class="timeline-bullets">
+              <div class="timeline-bullet">Authored monthly GNSS technical reports (The Space PNT Report) covering 3+ navigation systems — analysing constellation health, orbital behaviour, and operational trends for industry distribution.</div>
+              <div class="timeline-bullet">Applied orbital mechanics and computational methods to model satellite system behaviour for space technology and commercial market assessments under direct industry mentorship.</div>
+              <div class="timeline-bullet">Developed Python scripts for TLE data processing, orbital propagation, and station-keeping analysis to support data-driven space domain research.</div>
+              <div class="timeline-bullet">Delivered astrodynamics-based insights informing commercial space project evaluations, translating raw orbital data into structured technical findings.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">
+            <div class="timeline-date-label">2026</div>
+          </div>
+          <div class="timeline-line" aria-hidden="true">
+            <div class="timeline-dot" style="border-color:var(--green)"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-role">Tech Coordinator — Abhiyantrix 2026</div>
+            <div class="timeline-org">Departmental Tech Fest, IIEST Shibpur</div>
+            <div class="timeline-bullets">
+              <div class="timeline-bullet">Built and deployed the official fest website (HTML / CSS / JS) for participant registrations, schedule display, and event information — live throughout the event.</div>
+              <div class="timeline-bullet">Coordinated logistics and execution of technical competitions and workshops, managing cross-team communication to ensure smooth event delivery.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       EDUCATION
+  ======================================================= -->
+  <section id="education" aria-label="Education">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Education</p>
+        <h2 class="section-title">Academic foundation.</h2>
+      </div>
+
+      <div class="edu-card reveal">
+        <div>
+          <div class="edu-degree">B.Tech in Aerospace Engineering</div>
+          <div class="edu-inst">Indian Institute of Engineering Science and Technology (IIEST), Shibpur</div>
+          <div class="edu-meta">
+            <span class="edu-meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              2023 — 2027 (Expected)
+            </span>
+            <span class="edu-meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Howrah, West Bengal, India
+            </span>
+          </div>
+          <div class="coursework-label" style="margin-top:20px">Relevant Coursework</div>
+          <div class="coursework-tags">
+            <span class="coursework-tag">Orbital Mechanics</span>
+            <span class="coursework-tag">Flight Dynamics</span>
+            <span class="coursework-tag">Propulsion</span>
+            <span class="coursework-tag">Aerospace Structures</span>
+            <span class="coursework-tag">Thermodynamics</span>
+            <span class="coursework-tag">Engineering Mathematics</span>
+          </div>
+        </div>
+        <div>
+          <div class="edu-cgpa">7.17</div>
+          <div class="edu-cgpa-label">CGPA / 10<br/>Sem 1–5</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ======================================================
+       CONTACT
+  ======================================================= -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="contact-inner reveal">
+
+        <h2 class="contact-title">
+          Let's talk about<br /><span>orbital intelligence.</span>
+        </h2>
+
+        <p class="contact-sub">
+          Want to discuss GNSS, satellite data, aerospace software, or space-domain analysis?
+          Reach out — I'm always up for interesting problems.
+        </p>
+
+        <div class="contact-availability">
+          Available for internships, research collaborations &amp; technical projects
+        </div>
+
+        <div class="contact-links">
+
+          <a href="mailto:adityajjw19@gmail.com" class="contact-link" id="contact-email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email Me
+          </a>
+
+          <a href="https://www.linkedin.com/in/aditya-jhunjhunwala-146a53253/" target="_blank" rel="noopener" class="contact-link" id="contact-linkedin">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+
+          <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="contact-link" id="contact-github">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+
+          <a href="Aditya_resume (1).pdf" download class="contact-link" id="contact-resume">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Resume
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2025 Aditya Jhunjhunwala · Built from orbital first principles.</p>
+      <div class="footer-links" role="list">
+        <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" role="listitem">GitHub</a>
+        <a href="https://www.linkedin.com/in/aditya-jhunjhunwala-146a53253/" target="_blank" rel="noopener" role="listitem">LinkedIn</a>
+        <a href="mailto:adityajjw19@gmail.com" role="listitem">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
