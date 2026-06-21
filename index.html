@@ -220,17 +220,18 @@
             <p class="card-number">02 — Technical Writing</p>
             <h3 class="card-title">The Space PNT Report</h3>
             <p class="card-desc">
-              Monthly technical reporting on GNSS constellation health, orbital behaviour,
-              station-keeping patterns, and operational trends — authored under direct
-              industry mentorship for professional distribution. Covers NavIC, QZSS,
-              and BeiDou-3 across 3+ navigation systems per issue.
+              Co-authored technical reports using open-source TLE data and a custom health-scoring
+              algorithm to assess real GNSS constellation performance. Issue #1 analysed India's NavIC
+              fleet (4 of 7 satellites operational, per-satellite health scores, GDOP over Delhi).
+              Issue #2 examined Japan's QZSS resilience after the Dec 2025 H3 launch failure — slot
+              deviation analysis, 18-month expansion delay, and a NavIC vs QZSS capacity comparison.
             </p>
             <div class="card-tags">
               <span class="card-tag">NavIC</span>
               <span class="card-tag">QZSS</span>
-              <span class="card-tag">BeiDou-3</span>
-              <span class="card-tag">Orbital Analysis</span>
-              <span class="card-tag">Station-Keeping</span>
+              <span class="card-tag">TLE Health Scoring</span>
+              <span class="card-tag">GDOP Analysis</span>
+              <span class="card-tag">Launch Failure Impact</span>
             </div>
             <div class="card-actions" style="margin-top:auto">
               <a href="https://substack.com/@adityajjw19/note/p-186077093" target="_blank" rel="noopener" class="card-link primary" id="proj-report-latest">
@@ -447,8 +448,8 @@
         <p class="section-label">Writing & Analysis</p>
         <h2 class="section-title">The Space PNT Report</h2>
         <p class="section-sub">
-          Monthly technical reporting on GNSS constellation behaviour, orbital trends,
-          and space-domain observations — authored under industry mentorship.
+          Co-authored technical reports using open-source TLE data to assess GNSS constellation
+          health, satellite-level orbital behaviour, and strategic space-domain implications.
         </p>
       </div>
 
@@ -465,14 +466,18 @@
           <div class="report-item" role="listitem">
             <div class="report-id">/report-02</div>
             <div class="report-info">
-              <div class="report-title">The Space PNT Report — Issue #2</div>
+              <div class="report-title">Japan's QZSS After H3 Failure: Resilience by Design</div>
               <div class="report-meta">
-                <span class="report-meta-item">Constellations: <span>NavIC · QZSS · BeiDou-3</span></span>
-                <span class="report-meta-item">Type: <span>Orbital Behaviour Analysis</span></span>
+                <span class="report-meta-item">Published: <span>Apr 2026</span></span>
+                <span class="report-meta-item">Focus: <span>QZSS · NavIC comparison</span></span>
               </div>
               <p class="report-desc">
-                Orbital slot movement, station-keeping patterns, inclination drift, and constellation-level
-                operational observations across three GNSS systems.
+                H3 Flight F8's second-stage failure stranded QZS-5 in a sub-optimal orbit, delaying
+                Japan's 7-satellite expansion by ~18 months. The report analyses per-satellite longitude
+                slot adherence (e.g. QZS-1R sitting 12.57° west of its 148° designation), April 2026
+                health scores across the active QZSS fleet, and a direct architectural comparison with
+                NavIC — which now operates at 43% of design capacity vs QZSS's 71% despite both
+                suffering recent satellite losses.
               </p>
             </div>
             <div class="report-action">
@@ -485,14 +490,18 @@
           <div class="report-item" role="listitem">
             <div class="report-id">/report-01</div>
             <div class="report-info">
-              <div class="report-title">The Space PNT Report — Issue #1</div>
+              <div class="report-title">NavIC in November 2025: Performance Under Strain</div>
               <div class="report-meta">
-                <span class="report-meta-item">Constellations: <span>NavIC · QZSS · BeiDou-3</span></span>
-                <span class="report-meta-item">Type: <span>Constellation Health Overview</span></span>
+                <span class="report-meta-item">Published: <span>Nov 2025</span></span>
+                <span class="report-meta-item">Focus: <span>NavIC · IRNSS fleet</span></span>
               </div>
               <p class="report-desc">
-                First edition: GEO/IGSO behaviour analysis, TLE-derived health baselines,
-                and cross-constellation comparison of orbital stability metrics.
+                Inaugural issue using open-source TLE data and a custom health-scoring methodology
+                to assess India's NavIC fleet — then 4 of 7 satellites operational. IRNSS-1B and
+                IRNSS-1I score 91.3 and 93.4, while the newer NVS-01 scores just 60.5 due to
+                significant inclination deviation. Includes GDOP analysis of the 4-satellite geometry
+                over Delhi and E-W station-keeping pattern assessment, revealing signs of careful
+                propellant management ahead of constellation replenishment.
               </p>
             </div>
             <div class="report-action">
@@ -509,7 +518,7 @@
               <div class="report-meta">
                 <span class="report-meta-item" style="color:var(--text-3)">Status: <span style="color:var(--amber)">Upcoming</span></span>
               </div>
-              <p class="report-desc" style="font-style:italic">Next issue in preparation — covering BeiDou-3 GEO slot occupancy and NavIC operational trends.</p>
+              <p class="report-desc" style="font-style:italic">Next issue in preparation.</p>
             </div>
             <div class="report-action">
               <span class="card-link" style="opacity:0.5;cursor:default">Coming Soon</span>
