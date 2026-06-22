@@ -149,15 +149,34 @@
 
       <div class="work-grid stagger">
 
-        <!-- Card 1: GNSS — Featured (full width) -->
+        <!-- =====================================================
+             Card 1: GNSS — Featured (full width, flagship)
+        ====================================================== -->
         <div class="card-featured reveal" style="--i:0">
           <article class="project-card">
+
+            <!-- Ghost watermark -->
+            <span class="card-ghost-num" aria-hidden="true">01</span>
+
+            <!-- LEFT COLUMN -->
             <div class="featured-left">
-              <div>
+
+              <!-- Header row -->
+              <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
                 <span class="card-badge">Flagship Project</span>
-                <p class="card-number" style="margin-top:12px">01 — Live Dashboard</p>
+                <div class="featured-status">
+                  <div class="featured-status-dot"></div>
+                  System Online
+                </div>
               </div>
-              <h3 class="card-title">GNSS Constellation Health Monitoring System</h3>
+
+              <!-- Card number + title -->
+              <div>
+                <p class="card-number" style="margin-bottom:10px">01 — Live Dashboard</p>
+                <h3 class="card-title">GNSS Constellation Health<br />Monitoring System</h3>
+              </div>
+
+              <!-- Description -->
               <p class="card-desc">
                 A real-time dashboard that ingests TLE data from the Space-Track API, propagates
                 satellite positions using orbital mechanics, and converts raw dynamics into a
@@ -166,24 +185,28 @@
                 and time-series health trends enable simultaneous diagnostics across all three
                 constellations.
               </p>
-              <div class="card-metrics">
-                <div class="metric">
-                  <span class="metric-val">30+</span>
-                  <span class="metric-label">Satellites</span>
+
+              <!-- Stat bar (replaces old metrics row) -->
+              <div class="featured-stat-bar">
+                <div class="featured-stat">
+                  <span class="featured-stat-val">30+</span>
+                  <span class="featured-stat-label">Satellites</span>
                 </div>
-                <div class="metric">
-                  <span class="metric-val">3</span>
-                  <span class="metric-label">Constellations</span>
+                <div class="featured-stat">
+                  <span class="featured-stat-val">3</span>
+                  <span class="featured-stat-label">Constellations</span>
                 </div>
-                <div class="metric">
-                  <span class="metric-val">Live</span>
-                  <span class="metric-label">TLE Ingestion</span>
+                <div class="featured-stat">
+                  <span class="featured-stat-val">Live</span>
+                  <span class="featured-stat-label">TLE Ingestion</span>
                 </div>
-                <div class="metric">
-                  <span class="metric-val">Custom</span>
-                  <span class="metric-label">Health Score</span>
+                <div class="featured-stat">
+                  <span class="featured-stat-val">Custom</span>
+                  <span class="featured-stat-label">Health Score</span>
                 </div>
               </div>
+
+              <!-- Tags -->
               <div class="card-tags">
                 <span class="card-tag">Python</span>
                 <span class="card-tag">Streamlit</span>
@@ -194,37 +217,47 @@
                 <span class="card-tag">NavIC · QZSS · BeiDou-3</span>
               </div>
             </div>
+
+            <!-- RIGHT COLUMN — CTA panel -->
             <div class="featured-right">
-              <div class="card-actions">
-                <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="card-link primary" id="proj-gnss-live">
+              <p class="featured-cta-label">Quick access</p>
+              <div class="featured-cta-links">
+                <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="featured-cta-link highlight" id="proj-gnss-live">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                   Live Dashboard
+                  <span class="cta-arrow">↗</span>
                 </a>
-                <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-gnss-github">
+                <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="featured-cta-link" id="proj-gnss-github">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                  GitHub
+                  View on GitHub
+                  <span class="cta-arrow">↗</span>
                 </a>
-                <a href="#case-study" class="card-link" id="proj-gnss-case">
+                <a href="#case-study" class="featured-cta-link" id="proj-gnss-case">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                  Case Study ↓
+                  Read Case Study
+                  <span class="cta-arrow">↓</span>
                 </a>
               </div>
             </div>
+
           </article>
         </div>
 
-        <!-- Card 2: Space PNT Report -->
-        <div class="reveal" style="--i:1">
+        <!-- =====================================================
+             Card 2: Space PNT Report  (green accent)
+        ====================================================== -->
+        <div class="card-accent-green reveal" style="--i:1">
           <article class="project-card" style="height:100%">
+            <span class="card-ghost-num" aria-hidden="true">02</span>
             <span class="card-badge green">Monthly Report</span>
             <p class="card-number">02 — Technical Writing</p>
             <h3 class="card-title">The Space PNT Report</h3>
             <p class="card-desc">
               Co-authored technical reports using open-source TLE data and a custom health-scoring
               algorithm to assess real GNSS constellation performance. Issue #1 analysed India's NavIC
-              fleet (4 of 7 satellites operational, per-satellite health scores, GDOP over Delhi).
-              Issue #2 examined Japan's QZSS resilience after the Dec 2025 H3 launch failure — slot
-              deviation analysis, 18-month expansion delay, and a NavIC vs QZSS capacity comparison.
+              fleet (4 of 7 satellites operational). Issue #2 examined Japan's QZSS resilience after
+              the Dec 2025 H3 launch failure — slot deviation, 18-month expansion delay, and a NavIC
+              vs QZSS capacity comparison.
             </p>
             <div class="card-tags">
               <span class="card-tag">NavIC</span>
@@ -233,7 +266,7 @@
               <span class="card-tag">GDOP Analysis</span>
               <span class="card-tag">Launch Failure Impact</span>
             </div>
-            <div class="card-actions" style="margin-top:auto">
+            <div class="card-actions">
               <a href="https://substack.com/@adityajjw19/note/p-186077093" target="_blank" rel="noopener" class="card-link primary" id="proj-report-latest">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 Read Latest Issue
@@ -242,12 +275,15 @@
           </article>
         </div>
 
-        <!-- Card 3: TLE Toolkit -->
-        <div class="reveal" style="--i:2">
+        <!-- =====================================================
+             Card 3: TLE Toolkit  (amber accent)
+        ====================================================== -->
+        <div class="card-accent-amber reveal" style="--i:2">
           <article class="project-card" style="height:100%">
-            <span class="card-badge">Analysis Toolkit</span>
+            <span class="card-ghost-num" aria-hidden="true">03</span>
+            <span class="card-badge amber">Analysis Toolkit</span>
             <p class="card-number">03 — Research Tools</p>
-            <h3 class="card-title">TLE Processing & Station-Keeping Analysis</h3>
+            <h3 class="card-title">TLE Processing &amp; Station-Keeping Analysis</h3>
             <p class="card-desc">
               Python scripts for TLE data ingestion, orbital propagation via SGP4, slot
               deviation tracking with ±180° wrap-around handling, and station-keeping
@@ -261,7 +297,7 @@
               <span class="card-tag">Pandas</span>
               <span class="card-tag">Orbital Mechanics</span>
             </div>
-            <div class="card-actions" style="margin-top:auto">
+            <div class="card-actions">
               <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-tle-github">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 GitHub
@@ -270,10 +306,13 @@
           </article>
         </div>
 
-        <!-- Card 4: Abhiyantrix -->
-        <div class="reveal" style="--i:3">
+        <!-- =====================================================
+             Card 4: Abhiyantrix  (purple accent)
+        ====================================================== -->
+        <div class="card-accent-purple reveal" style="--i:3">
           <article class="project-card" style="height:100%">
-            <span class="card-badge">Web Development</span>
+            <span class="card-ghost-num" aria-hidden="true">04</span>
+            <span class="card-badge purple">Web Development</span>
             <p class="card-number">04 — Leadership</p>
             <h3 class="card-title">Abhiyantrix 2026 — Fest Website</h3>
             <p class="card-desc">
@@ -288,7 +327,7 @@
               <span class="card-tag">JavaScript</span>
               <span class="card-tag">IIEST Shibpur</span>
             </div>
-            <div class="card-actions" style="margin-top:auto">
+            <div class="card-actions">
               <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" class="card-link" id="proj-abhiyantrix-github">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                 GitHub
