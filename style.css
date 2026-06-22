@@ -711,7 +711,15 @@ section { position: relative; z-index: 1; }
   background: rgba(0,229,255,0.14);
   box-shadow: 0 0 20px rgba(0,229,255,0.18);
 }
-.featured-cta-link svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.8; }
+.featured-cta-link svg,
+.card-link svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px;
+  min-height: 16px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
 .featured-cta-link .cta-arrow {
   margin-left: auto;
   opacity: 0;
