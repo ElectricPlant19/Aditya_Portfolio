@@ -309,128 +309,145 @@
   <section id="case-study" aria-label="GNSS dashboard case study">
     <div class="container">
 
+      <!-- Section header -->
       <div class="reveal">
-        <p class="section-label">Case Study</p>
-        <h2 class="section-title">Turning TLE Data into<br />GNSS Health Intelligence</h2>
-        <p class="section-sub">
-          How raw orbital elements become interpretable constellation health metrics — from
-          Space-Track API ingestion to real-time dashboard.
+        <div class="cs-header-pill">
+          <div class="cs-header-pill-dot"></div>
+          <span class="cs-header-pill-text">Deep Dive · GNSS Dashboard</span>
+        </div>
+        <h2 class="cs-big-title">Turning TLE Data into<br /><em>GNSS Health Intelligence</em></h2>
+        <p class="cs-big-sub">
+          From raw Space-Track API ingestion to interpretable constellation health scores —
+          how the pipeline works, what it monitors, and why it matters.
         </p>
       </div>
 
-      <div class="cs-grid">
+      <!-- 2-column layout -->
+      <div class="cs2-grid">
 
-        <div class="cs-left">
+        <!-- LEFT: numbered step flow -->
+        <div class="cs2-steps reveal">
 
-          <div class="cs-block reveal">
-            <span class="cs-block-label">The Problem</span>
-            <h3 class="cs-block-title">Raw orbital data is hard to interpret.</h3>
-            <p class="cs-block-body">
-              GNSS constellations are critical operational infrastructure, but Two-Line Element
-              records are dense, numeric, and opaque. Orbital drift, slot deviation, and
-              station-keeping residuals are buried in propagated state vectors — only visible
-              after processing, modelling, and visualisation. There was no fast, accessible
-              way to assess constellation health at a glance.
-            </p>
+          <!-- Step 01 -->
+          <div class="cs2-step active">
+            <div class="cs2-step-line">
+              <div class="cs2-step-num">01</div>
+              <div class="cs2-step-connector"></div>
+            </div>
+            <div class="cs2-step-body">
+              <div class="cs2-step-tag">The Problem</div>
+              <h3 class="cs2-step-title">Raw orbital data is unreadable.</h3>
+              <p class="cs2-step-desc">
+                GNSS constellations are critical infrastructure, but Two-Line Element records
+                are dense, numeric, and opaque. Orbital drift, slot deviation, and station-keeping
+                residuals are buried in state vectors — invisible without propagation, processing,
+                and visualisation. There was no fast way to assess constellation health at a glance.
+              </p>
+            </div>
           </div>
 
-          <div class="cs-block reveal">
-            <span class="cs-block-label">The Solution</span>
-            <h3 class="cs-block-title">An automated health intelligence pipeline.</h3>
-            <p class="cs-block-body">
-              A Streamlit dashboard that pulls TLE data from the Space-Track API, propagates
-              satellite positions using SGP4 orbital mechanics, and computes a custom weighted
-              health index per satellite — combining orbital drift magnitude, station-keeping
-              residuals, and inclination deviation into a single interpretable score.
-            </p>
+          <!-- Step 02 -->
+          <div class="cs2-step active">
+            <div class="cs2-step-line">
+              <div class="cs2-step-num">02</div>
+              <div class="cs2-step-connector"></div>
+            </div>
+            <div class="cs2-step-body">
+              <div class="cs2-step-tag">The Solution</div>
+              <h3 class="cs2-step-title">An automated intelligence pipeline.</h3>
+              <p class="cs2-step-desc">
+                A Streamlit dashboard that pulls TLE data from the Space-Track API, propagates
+                positions using SGP4 orbital mechanics, and computes a custom weighted health index —
+                combining orbital drift magnitude, station-keeping residuals, and inclination
+                deviation into a single interpretable per-satellite score.
+              </p>
+            </div>
           </div>
 
-          <div class="cs-block reveal">
-            <span class="cs-block-label">What It Does</span>
-            <h3 class="cs-block-title">Six core capabilities.</h3>
-            <div class="cs-features">
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </span>
-                Automated TLE ingestion from Space-Track API — constellation state updated continuously
-              </div>
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                </span>
-                Custom weighted health-scoring algorithm per satellite
-              </div>
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                </span>
-                Geographic ground-track maps and interactive sky plots (elevation/azimuth)
-              </div>
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-                </span>
-                Time-series health trends across all 30+ satellites
-              </div>
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </span>
-                GEO slot deviation tracking with ±180° wrap-around for BeiDou-3 IGSO/GEO
-              </div>
-              <div class="cs-feature">
-                <span class="cs-feature-icon" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                </span>
-                Multi-constellation comparison across NavIC, QZSS, and BeiDou-3
+          <!-- Step 03 -->
+          <div class="cs2-step">
+            <div class="cs2-step-line">
+              <div class="cs2-step-num">03</div>
+            </div>
+            <div class="cs2-step-body">
+              <div class="cs2-step-tag">Capabilities</div>
+              <h3 class="cs2-step-title">Six things it does simultaneously.</h3>
+              <div class="cs2-chips">
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>TLE Ingestion</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>Health Scoring</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>Ground-Track Maps</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>Sky Plots</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>GEO Slot Deviation</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>Health Trends</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>NavIC</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>QZSS</span>
+                <span class="cs2-chip"><span class="cs2-chip-dot"></span>BeiDou-3</span>
               </div>
             </div>
           </div>
 
-        </div><!-- cs-left -->
+        </div><!-- cs2-steps -->
 
-        <div class="cs-right reveal">
-          <div class="cs-img-card">
-            <div class="cs-img-card-label">// Dashboard overview · GNSS Health Monitor</div>
-            <img src="dashboard_mockup.png" alt="GNSS constellation health monitoring dashboard overview" loading="lazy" />
+        <!-- RIGHT: visual + why card -->
+        <div class="cs2-visual reveal">
+
+          <!-- Live dashboard frame -->
+          <div class="cs2-dash-frame">
+            <div class="cs2-dash-bar">
+              <div class="cs2-dash-dots">
+                <div class="cs2-db-dot"></div>
+                <div class="cs2-db-dot"></div>
+                <div class="cs2-db-dot"></div>
+              </div>
+              <span class="cs2-dash-url">gnss-health-monitor.streamlit.app</span>
+              <span class="cs2-live-badge">Live</span>
+            </div>
+            <img class="cs2-dash-img"
+              src="dashboard_mockup.png"
+              alt="GNSS Constellation Health Monitoring Dashboard — satellite health scores, ground tracks, sky plots"
+              loading="lazy"
+            />
           </div>
 
-          <div class="cs-block" style="background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-md); padding:24px">
-            <span class="cs-block-label">Why It Matters</span>
-            <p class="cs-block-body">
+          <!-- Why it matters -->
+          <div class="cs2-why-card">
+            <span class="cs2-why-label">Why It Matters</span>
+            <p class="cs2-why-text">
               The goal is to make constellation behaviour understandable at a glance — for
               analysis, monitoring, reporting, and decision support. Raw TLE data is a
               starting point; the dashboard is what turns it into intelligence.
             </p>
-            <div style="margin-top:16px">
-              <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="card-link primary" id="cs-live-link">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                Open Live Dashboard →
-              </a>
-            </div>
+            <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="cs2-why-cta" id="cs-live-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Open Live Dashboard →
+            </a>
           </div>
-        </div><!-- cs-right -->
 
-      </div><!-- cs-grid -->
+        </div><!-- cs2-visual -->
 
-      <!-- Impact bar -->
-      <div class="cs-impact reveal">
-        <div class="cs-stat">
-          <span class="cs-stat-val">30+</span>
-          <span class="cs-stat-label">Satellites Monitored</span>
+      </div><!-- cs2-grid -->
+
+      <!-- Impact stats row -->
+      <div class="cs2-impact reveal">
+        <div class="cs2-stat">
+          <span class="cs2-stat-val">30+</span>
+          <span class="cs2-stat-label">Satellites</span>
+          <span class="cs2-stat-sub">Monitored in real-time</span>
         </div>
-        <div class="cs-stat">
-          <span class="cs-stat-val">3</span>
-          <span class="cs-stat-label">Constellations</span>
+        <div class="cs2-stat">
+          <span class="cs2-stat-val">3</span>
+          <span class="cs2-stat-label">Constellations</span>
+          <span class="cs2-stat-sub">NavIC · QZSS · BeiDou-3</span>
         </div>
-        <div class="cs-stat">
-          <span class="cs-stat-val">6</span>
-          <span class="cs-stat-label">Visualisation Types</span>
+        <div class="cs2-stat">
+          <span class="cs2-stat-val">6</span>
+          <span class="cs2-stat-label">View Types</span>
+          <span class="cs2-stat-sub">Charts, maps, sky plots</span>
         </div>
-        <div class="cs-stat">
-          <span class="cs-stat-val">Live</span>
-          <span class="cs-stat-label">API Ingestion</span>
+        <div class="cs2-stat">
+          <span class="cs2-stat-val">Live</span>
+          <span class="cs2-stat-label">Data Ingestion</span>
+          <span class="cs2-stat-sub">Space-Track API</span>
         </div>
       </div>
 
