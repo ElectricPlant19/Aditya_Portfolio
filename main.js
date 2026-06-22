@@ -336,10 +336,53 @@
 
 
 /* ---------------------------------------------------------
-   8. ANIMATE COUNTER — cs-stat values on scroll
+   8. CASE STUDY TABS
+   --------------------------------------------------------- */
+(function initCaseStudyTabs() {
+  const tabs = Array.from(document.querySelectorAll('[data-cs-tab]'));
+  const panels = Array.from(document.querySelectorAll('[data-cs-panel]'));
+  if (!tabs.length || !panels.length) return;
+
+  function activateTab(id, shouldFocus = false) {
+    tabs.forEach(tab => {
+      const isActive = tab.dataset.csTab === id;
+      tab.classList.toggle('is-active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      tab.tabIndex = isActive ? 0 : -1;
+      if (isActive && shouldFocus) tab.focus();
+    });
+
+    panels.forEach(panel => {
+      const isActive = panel.dataset.csPanel === id;
+      panel.classList.toggle('is-active', isActive);
+      panel.hidden = !isActive;
+    });
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateTab(tab.dataset.csTab));
+    tab.addEventListener('keydown', (e) => {
+      const lastIndex = tabs.length - 1;
+      let nextIndex = index;
+
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIndex = index === lastIndex ? 0 : index + 1;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIndex = index === 0 ? lastIndex : index - 1;
+      if (e.key === 'Home') nextIndex = 0;
+      if (e.key === 'End') nextIndex = lastIndex;
+      if (nextIndex === index) return;
+
+      e.preventDefault();
+      activateTab(tabs[nextIndex].dataset.csTab, true);
+    });
+  });
+})();
+
+
+/* ---------------------------------------------------------
+   9. ANIMATE COUNTER — cs-stat values on scroll
    --------------------------------------------------------- */
 (function initCounters() {
-  const stats = document.querySelectorAll('.cs-stat-val, .metric-val');
+  const stats = document.querySelectorAll('.cs-stat-val, .cs2-stat-val, .metric-val');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
