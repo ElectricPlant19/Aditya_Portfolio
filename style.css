@@ -1565,9 +1565,9 @@ section { position: relative; z-index: 1; }
 }
 
 .cs2-dash-img {
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  object-position: top center;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .cs2-why-card {
