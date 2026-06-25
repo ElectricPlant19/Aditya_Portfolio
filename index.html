@@ -74,6 +74,9 @@
             satellite navigation, and data-driven space-domain analysis. Currently monitoring
             <strong>30+ satellites</strong> across NavIC, QZSS, and BeiDou-3 in real-time.
           </p>
+          <p class="hero-desc reveal" style="margin-top:0.5rem;color:var(--text-2);font-size:0.93em">
+            Especially interested in aerospace software, scientific computing, data systems, and applied ML for space-domain problems.
+          </p>
 
           <div class="hero-meta reveal">
             <span class="hero-meta-item">GNSS OSINT</span>
@@ -179,11 +182,10 @@
               <!-- Description -->
               <p class="card-desc">
                 A real-time dashboard that ingests TLE data from the Space-Track API, propagates
-                satellite positions using orbital mechanics, and converts raw dynamics into a
-                custom weighted health index — covering station-keeping residuals, orbital drift
-                magnitude, and inclination deviation. Interactive sky plots, ground-track maps,
-                and time-series health trends enable simultaneous diagnostics across all three
-                constellations.
+                satellite positions using SGP4, and computes a custom weighted health score per satellite —
+                combining longitude slot deviation (with ±180° wrap-around handling), inclination deviation,
+                station-keeping residuals, and orbital drift rate. Interactive sky plots, ground-track maps,
+                and health-trend time series enable simultaneous diagnostics across all three constellations.
               </p>
 
               <!-- Stat bar (replaces old metrics row) -->
@@ -337,10 +339,9 @@
             <p class="card-number">04 — Leadership</p>
             <h3 class="card-title">Abhiyantrix 2026 — Fest Website</h3>
             <p class="card-desc">
-              Built and deployed the official website for IIEST Shibpur's departmental tech
-              fest — handling participant registrations, schedule display, and event
-              information. Managed cross-team coordination and technical event logistics
-              throughout the fest.
+              Built and deployed the official fest website (HTML / CSS / JS) handling
+              participant registrations, schedule visibility, and event coordination —
+              live throughout the fest. Led cross-team communication and technical event logistics.
             </p>
             <div class="card-tags">
               <span class="card-tag">HTML</span>
@@ -438,13 +439,15 @@
             </div>
             <div class="cs2-step-body">
               <div class="cs2-step-tag">The Solution</div>
-              <h3 class="cs2-step-title">An automated intelligence pipeline.</h3>
+              <h3 class="cs2-step-title">An automated data pipeline, end to end.</h3>
               <p class="cs2-step-desc">
                 A Streamlit dashboard that pulls TLE data from the Space-Track API, propagates
-                positions using SGP4 orbital mechanics, and computes a custom weighted health index —
-                combining orbital drift magnitude, station-keeping residuals, and inclination
-                deviation into a single interpretable per-satellite score.
+                positions using SGP4 orbital mechanics, and computes a per-satellite health score:
               </p>
+              <div class="cs2-formula">
+                <code>H = w<sub>1</sub>·slot_dev + w<sub>2</sub>·incl_dev + w<sub>3</sub>·drift + w<sub>4</sub>·sk_residuals</code>
+                <span class="cs2-formula-note">Score 0–100 · lower deviation = higher score</span>
+              </div>
             </div>
           </div>
 
@@ -494,15 +497,17 @@
             />
           </div>
 
-          <!-- Why it matters -->
-          <div class="cs2-why-card">
-            <span class="cs2-why-label">Why It Matters</span>
-            <p class="cs2-why-text">
-              The goal is to make constellation behaviour understandable at a glance — for
-              analysis, monitoring, reporting, and decision support. Raw TLE data is a
-              starting point; the dashboard is what turns it into intelligence.
-            </p>
-            <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="cs2-why-cta" id="cs-live-link">
+          <!-- Engineering Challenges -->
+          <div class="cs2-challenges-card">
+            <span class="cs2-why-label">Engineering Challenges</span>
+            <ul class="cs2-challenges-list">
+              <li><span class="cs2-challenge-dot"></span><strong>±180° longitude wrap-around</strong> — slot deviation computed correctly across the antimeridian</li>
+              <li><span class="cs2-challenge-dot"></span><strong>GEO / IGSO classification</strong> — orbit-type detection from TLE inclination and eccentricity</li>
+              <li><span class="cs2-challenge-dot"></span><strong>TLE freshness &amp; missing data</strong> — stale record detection and graceful degradation</li>
+              <li><span class="cs2-challenge-dot"></span><strong>Health-score weighting</strong> — empirical tuning of per-metric weights across constellation types</li>
+              <li><span class="cs2-challenge-dot"></span><strong>Station-keeping maneuver detection</strong> — distinguishing deliberate burns from passive drift</li>
+            </ul>
+            <a href="https://gnss-health-monitor.streamlit.app/" target="_blank" rel="noopener" class="cs2-why-cta" id="cs-live-link" style="margin-top:1rem">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               Open Live Dashboard →
             </a>
@@ -914,7 +919,7 @@
       <div class="contact-inner reveal">
 
         <h2 class="contact-title">
-          Let's talk about<br /><span>orbital intelligence.</span>
+          Let's build something<br /><span>worth launching.</span>
         </h2>
 
         <p class="contact-sub">
@@ -958,7 +963,7 @@
   ======================================================= -->
   <footer>
     <div class="footer-inner">
-      <p class="footer-copy">© 2025 Aditya Jhunjhunwala · Built from orbital first principles.</p>
+      <p class="footer-copy">© 2025 Aditya Jhunjhunwala · Aerospace engineering meets software.</p>
       <div class="footer-links" role="list">
         <a href="https://github.com/ElectricPlant19" target="_blank" rel="noopener" role="listitem">GitHub</a>
         <a href="https://www.linkedin.com/in/aditya-jhunjhunwala-146a53253/" target="_blank" rel="noopener" role="listitem">LinkedIn</a>
