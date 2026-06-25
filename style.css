@@ -1249,7 +1249,7 @@ section { position: relative; z-index: 1; }
 /* RIGHT: visual stack */
 .cs2-visual { display: flex; flex-direction: column; gap: 16px; }
 
-.cs2-dash-frame {
+.cs2-dash-frame { flex-shrink: 0;
   border-radius: var(--r-lg);
   overflow: hidden;
   border: 1px solid rgba(0,229,255,0.22);
