@@ -351,12 +351,14 @@
   };
 
   function swapImage(newSrc, altText) {
-    if (!dashImg || dashImg.src.endsWith(newSrc)) return;
+    if (!dashImg) return;
+    if (dashImg.dataset.current === newSrc) return;   // already showing this image
     dashImg.style.transition = 'opacity 0.2s ease';
     dashImg.style.opacity = '0';
     setTimeout(() => {
       dashImg.src = newSrc;
       dashImg.alt = altText;
+      dashImg.dataset.current = newSrc;
       dashImg.style.opacity = '1';
     }, 200);
   }
