@@ -341,7 +341,25 @@
 (function initCaseStudyTabs() {
   const tabs = Array.from(document.querySelectorAll('[data-cs-tab]'));
   const panels = Array.from(document.querySelectorAll('[data-cs-panel]'));
+  const dashImg = document.getElementById('cs2-dash-img');
   if (!tabs.length || !panels.length) return;
+
+  const imgAlts = {
+    problem:      'Raw TLE data feed — dense alphanumeric satellite orbital records',
+    solution:     'Automated intelligence pipeline — from Space-Track API to health scoring',
+    capabilities: 'Six diagnostic views — health scoring, ground tracks, sky plots, and more',
+  };
+
+  function swapImage(newSrc, altText) {
+    if (!dashImg || dashImg.src.endsWith(newSrc)) return;
+    dashImg.style.transition = 'opacity 0.2s ease';
+    dashImg.style.opacity = '0';
+    setTimeout(() => {
+      dashImg.src = newSrc;
+      dashImg.alt = altText;
+      dashImg.style.opacity = '1';
+    }, 200);
+  }
 
   function activateTab(id, shouldFocus = false) {
     tabs.forEach(tab => {
@@ -350,6 +368,9 @@
       tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
       tab.tabIndex = isActive ? 0 : -1;
       if (isActive && shouldFocus) tab.focus();
+      if (isActive && tab.dataset.csImg) {
+        swapImage(tab.dataset.csImg, imgAlts[id] || '');
+      }
     });
 
     panels.forEach(panel => {

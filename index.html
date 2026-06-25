@@ -383,21 +383,21 @@
       </div>
 
       <div class="cs-tabs reveal" role="tablist" aria-label="GNSS dashboard walkthrough">
-        <button class="cs-tab is-active" id="cs-tab-problem" type="button" role="tab" aria-selected="true" aria-controls="cs-panel-problem" data-cs-tab="problem">
+        <button class="cs-tab is-active" id="cs-tab-problem" type="button" role="tab" aria-selected="true" aria-controls="cs-panel-problem" data-cs-tab="problem" data-cs-img="cs_problem.png">
           <span class="cs-tab-index">01</span>
           <span class="cs-tab-copy">
             <strong>Problem</strong>
             <small>Raw TLE data</small>
           </span>
         </button>
-        <button class="cs-tab" id="cs-tab-solution" type="button" role="tab" aria-selected="false" aria-controls="cs-panel-solution" data-cs-tab="solution" tabindex="-1">
+        <button class="cs-tab" id="cs-tab-solution" type="button" role="tab" aria-selected="false" aria-controls="cs-panel-solution" data-cs-tab="solution" data-cs-img="cs_solution.png" tabindex="-1">
           <span class="cs-tab-index">02</span>
           <span class="cs-tab-copy">
             <strong>Solution</strong>
             <small>Automated pipeline</small>
           </span>
         </button>
-        <button class="cs-tab" id="cs-tab-capabilities" type="button" role="tab" aria-selected="false" aria-controls="cs-panel-capabilities" data-cs-tab="capabilities" tabindex="-1">
+        <button class="cs-tab" id="cs-tab-capabilities" type="button" role="tab" aria-selected="false" aria-controls="cs-panel-capabilities" data-cs-tab="capabilities" data-cs-img="cs_capabilities.png" tabindex="-1">
           <span class="cs-tab-index">03</span>
           <span class="cs-tab-copy">
             <strong>Capabilities</strong>
@@ -486,9 +486,9 @@
               <span class="cs2-dash-url">gnss-health-monitor.streamlit.app</span>
               <span class="cs2-live-badge">Live</span>
             </div>
-            <img class="cs2-dash-img"
-              src="gnss_ground_track.png"
-              alt="Live GNSS constellation orbital ground track map — NavIC, QZSS, and BeiDou-3 satellite paths"
+            <img class="cs2-dash-img" id="cs2-dash-img"
+              src="cs_problem.png"
+              alt="Raw TLE data feed — dense alphanumeric satellite orbital records"
               loading="lazy"
             />
           </div>
